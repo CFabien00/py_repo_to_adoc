@@ -69,7 +69,7 @@ class DocstringsDocumentCreator:
             res.append(argument)
         return res
 
-    def _get_class_info(self, node: ast.ClassDef) -> Dict[str:any]:
+    def _get_class_info(self, node: ast.ClassDef) -> Dict[str,any]:
         """Crée un dictionnaire de classe comprenant le docstring et la class d'héritage
         et la clé 'methods' (vide, car remplie plus tard).
         """
@@ -99,7 +99,7 @@ class DocstringsDocumentCreator:
 
     # region _extract
 
-    def _extract_docstrings_from_project(self) -> Dict[str:any]:
+    def _extract_docstrings_from_project(self) -> Dict[str,any]:
         """Extrait les docstrings de toutes les classes, méthodes et fonctions d'un projet."""
         project_data = defaultdict(lambda: {"classes": {}, "functions": {}})
         for root, _, files in os.walk(self.module_path):
@@ -114,7 +114,7 @@ class DocstringsDocumentCreator:
 
         return project_data
 
-    def _extract_docstrings_from_file(self, py_file_path: str) -> Tuple[Dict[str:any], Dict[str:any]]:
+    def _extract_docstrings_from_file(self, py_file_path: str) -> Tuple[Dict[str,any], Dict[str,any]]:
         """Extrait les classes, méthodes et fonctions avec leurs docstrings d'un fichier Python."""
         with open(py_file_path, "r", encoding="utf-8") as file:
             tree = ast.parse(file.read(), filename=py_file_path)

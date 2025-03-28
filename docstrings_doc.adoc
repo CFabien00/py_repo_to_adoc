@@ -1,0 +1,130 @@
+:toc:
+:sectnums:
+:toclevels: 3
+:toc-title: Code overview
+
+== .py
+
+== /py_to_adoc/py_to_adoc.py
+
+=== Classe : DocstringsDocumentCreator
+
+Crée un fichier .adoc listant les docstrings des classes, méthodes et fonctions.
+Ajoute aussi les paramètres et leurs types si precisés via Typing.
+
+==== _extract_docstrings_from_file
+
+Extrait les classes, méthodes et fonctions avec leurs docstrings d'un fichier Python.
+
+*@params* :
+
+* py_file_path (str)
+
+==== _extract_docstrings_from_project
+
+Extrait les docstrings de toutes les classes, méthodes et fonctions d'un projet.
+
+==== _format_method_textlines
+
+_No docstring_
+
+*@params* :
+
+* method_name (str)
+* method_doc (Dict)
+
+==== _format_name
+
+Formate le nom de la méthode pour qu'elle n'apparaisse pas en italique en .adoc.
+Par exemple __setitem__ apparaitra `_setitem_` en italic.
+Cette méthode cherche à retirer cela en forçant le premier underscore
+
+*@params* :
+
+* name (str)
+
+*@returns* : str
+
+
+==== _get_args
+
+Crée la liste des arguments d'une méthode sous forme de texte, ajoute le type si disponible.
+
+*@params* :
+
+* node
+
+==== _get_class_info
+
+Crée un dictionnaire de classe comprenant le docstring et la class d'héritage
+et la clé 'methods' (vide, car remplie plus tard).
+
+*@params* :
+
+* node
+
+==== _get_function_info
+
+Retourne le dictionnaire documentaire de la fonction (docstrings, arguments).
+Une fonction est une méthode qui n'est pas encapsulée dans une class.
+
+*@params* :
+
+* node
+
+*@returns* : Dict
+
+
+==== _get_method_info
+
+Retour le dictionnaire de la méthode (docstrings, arguments)
+
+*@params* :
+
+* node
+
+*@returns* : Dict
+
+
+==== _write_class_section
+
+Écrit les infos de la class (titre, nom, base) dans le fichier .adoc
+
+*@params* :
+
+* file (any)
+* class_name (str)
+* class_data (Dict)
+
+==== _write_function_section
+
+Écrit les infos de la function (titre, nom, arguments) dans le fichier .adoc
+
+*@params* :
+
+* file (any)
+* func_name (str)
+* func_doc (Dict)
+
+==== _write_method_section
+
+Écrit les infos de la method (titre, nom, arguments) dans le fichier .adoc
+
+*@params* :
+
+* file (any)
+* method_name (str)
+* method_doc (Dict)
+
+==== _write_to_adoc
+
+Enregistre tous les docstrings extraites dans un fichier AsciiDoc.
+
+*@params* :
+
+* project_data (Dict)
+
+==== create_docstring_doc
+
+Récupère les infos des fichiers point .py et les transpose dans un .adoc
+
