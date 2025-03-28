@@ -3,8 +3,6 @@
 :toclevels: 3
 :toc-title: Code overview
 
-== .py
-
 == /py_to_adoc/py_to_adoc.py
 
 === Classe : DocstringsDocumentCreator
@@ -20,9 +18,15 @@ Extrait les classes, méthodes et fonctions avec leurs docstrings d'un fichier P
 
 * py_file_path (str)
 
+*@return* : None
+
+
 ==== _extract_docstrings_from_project
 
 Extrait les docstrings de toutes les classes, méthodes et fonctions d'un projet.
+
+*@return* : None
+
 
 ==== _format_method_textlines
 
@@ -32,6 +36,9 @@ _No docstring_
 
 * method_name (str)
 * method_doc (Dict)
+
+*@return* : None
+
 
 ==== _format_name
 
@@ -43,7 +50,7 @@ Cette méthode cherche à retirer cela en forçant le premier underscore
 
 * name (str)
 
-*@returns* : str
+*@return* : str
 
 
 ==== _get_args
@@ -54,6 +61,9 @@ Crée la liste des arguments d'une méthode sous forme de texte, ajoute le type 
 
 * node
 
+*@return* : None
+
+
 ==== _get_class_info
 
 Crée un dictionnaire de classe comprenant le docstring et la class d'héritage
@@ -62,6 +72,9 @@ et la clé 'methods' (vide, car remplie plus tard).
 *@params* :
 
 * node
+
+*@return* : None
+
 
 ==== _get_function_info
 
@@ -72,7 +85,7 @@ Une fonction est une méthode qui n'est pas encapsulée dans une class.
 
 * node
 
-*@returns* : Dict
+*@return* : Dict
 
 
 ==== _get_method_info
@@ -83,7 +96,7 @@ Retour le dictionnaire de la méthode (docstrings, arguments)
 
 * node
 
-*@returns* : Dict
+*@return* : Dict
 
 
 ==== _write_class_section
@@ -96,6 +109,9 @@ Retour le dictionnaire de la méthode (docstrings, arguments)
 * class_name (str)
 * class_data (Dict)
 
+*@return* : None
+
+
 ==== _write_function_section
 
 Écrit les infos de la function (titre, nom, arguments) dans le fichier .adoc
@@ -105,6 +121,9 @@ Retour le dictionnaire de la méthode (docstrings, arguments)
 * file (any)
 * func_name (str)
 * func_doc (Dict)
+
+*@return* : None
+
 
 ==== _write_method_section
 
@@ -116,6 +135,9 @@ Retour le dictionnaire de la méthode (docstrings, arguments)
 * method_name (str)
 * method_doc (Dict)
 
+*@return* : None
+
+
 ==== _write_to_adoc
 
 Enregistre tous les docstrings extraites dans un fichier AsciiDoc.
@@ -124,7 +146,13 @@ Enregistre tous les docstrings extraites dans un fichier AsciiDoc.
 
 * project_data (Dict)
 
+*@return* : None
+
+
 ==== create_docstring_doc
 
 Récupère les infos des fichiers point .py et les transpose dans un .adoc
+
+*@return* : None
+
 
