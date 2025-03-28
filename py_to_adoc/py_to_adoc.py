@@ -7,7 +7,7 @@ from typing import Dict, List, Tuple, Optional
 # region Exclusion
 
 EXCLUDED_PY_FILES = {
-    # "docstrings_docs.py",
+    "py_repo_to_adoc.py",
     "__init__.py",
     "__manifest__.py",
 }
@@ -91,7 +91,9 @@ class DocstringsDocumentCreator:
             "docstring": ast.get_docstring(node) or self.no_docstring,
             "args": self._get_args(node),
         }
-        if hasattr(node, "returns") and hasattr(node.returns, "id"):
+        if not hasattr(node, "returns") or not hasattr(node.returns, "id"):
+            value["returns"] = "None"
+        else:
             value["returns"] = node.returns.id
         return {node.name: value}
 
@@ -205,5 +207,5 @@ class DocstringsDocumentCreator:
         if method_doc.get("args", False):
             text_lines.extend(["\n*@params* :\n"] + [f"* {args}" for args in method_doc["args"]])
         if method_doc.get("returns", False):
-            text_lines.append(f"\n*@returns* : {method_doc['returns']}\n")
+            text_lines.append(f"\n*@return* : {method_doc['returns']}\n")
         return text_lines
